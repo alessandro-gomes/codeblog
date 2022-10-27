@@ -4,6 +4,7 @@ import com.spring.codeblog.model.Post;
 import com.spring.codeblog.repository.CodeblogRepository;
 import com.spring.codeblog.service.CodeblogService;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,12 @@ public class CodeblogServiceImplements implements CodeblogService {
     public Post save(Post post) {
         return codeblogRespository.save(post);
     }
-    
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        codeblogRespository.deleteById(id);
+    }
     
     
 }
